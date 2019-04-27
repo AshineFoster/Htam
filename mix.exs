@@ -29,7 +29,7 @@ defmodule Htam.MixProject do
   end
 
   defp description() do
-    "A few sentences (a paragraph) describing the project."
+    "A fork of the math package."
   end
 
   defp package() do
