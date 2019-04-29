@@ -74,11 +74,11 @@ defmodule Math.AP do
 
   ## Examples
 
-    iex> Math.AP.sqrt(2, 10)
-    #Decimal<1.414213562>
+        iex> Math.AP.sqrt(2, 10)
+        #Decimal<1.414213562>
 
-    iex> Math.AP.sqrt(2, 15) 
-    #Decimal<1.41421356237310>
+        iex> Math.AP.sqrt(2, 15) 
+        #Decimal<1.41421356237310>
   """
   def sqrt(num, prec) do
     Decimal.set_context(%Decimal.Context{precision: prec})

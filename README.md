@@ -47,6 +47,12 @@ The Math module adds many useful functions that extend Elixir's standard library
   - `Math.Enum.mean(collection)` the mean of the numbers in the collection.
   - `Math.Enum.median(collection)` the median of the numbers in the collection.
 
+- Arbitrary precision functions and constants
+  - `Math.AP.e(x)` The constant e up to *x* decimal places.
+  - `Math.AP.pi(x)` The constant pi up to *x* decimal places.
+  - `Math.AP.tau(x)` The constant tau up to *x* decimal places.
+  - `Math.AP.sqrt(x, y)` The square root of *x* to *y* decimal places.
+
 ## Installation
 
 The package can be installed by adding `htam` to your list of dependencies in `mix.exs`:
