@@ -93,10 +93,10 @@ defmodule Math.AP do
   ## Examples
 
       iex> Math.AP.e
-      "2.7182818285"
+      #Decimal<2.7182818285>
 
       iex> Math.AP.e(30)
-      "2.718281828459045235360287471353"  
+      #Decimal<2.718281828459045235360287471353>  
 
   """
   @iter 500
