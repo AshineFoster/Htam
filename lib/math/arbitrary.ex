@@ -13,7 +13,6 @@ defmodule Math.AP do
 
       iex> Math.AP.pi 30
       #Decimal<3.141592653589793238462643383280>
-
   """
   def pi(disp \\ 10) do
     chudnovsky(disp)
@@ -96,7 +95,7 @@ defmodule Math.AP do
       #Decimal<2.7182818285>
 
       iex> Math.AP.e(30)
-      #Decimal<2.718281828459045235360287471353>  
+      #Decimal<2.718281828459045235360287471353>
 
   """
   @iter 500

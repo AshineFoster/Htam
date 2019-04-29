@@ -3,6 +3,7 @@ defmodule MathTest do
   import Math
   doctest Math
   doctest Math.Enum
+  doctest Math.AP
 
   test "nearly equal" do
     assert 0 <~> 0 == true
