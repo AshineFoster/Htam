@@ -31,7 +31,7 @@ defmodule Htam.MixProject do
 
   defp description() do
     "A fork of the math package. Experimental addition of arbitrary precision 
-    calculation of sqrt fuction as well as constants 𝛑, 𝛕, ℯ up to 1000 decimal places."
+    calculation of sqrt function as well as constants π, τ, ℯ up to 1000 decimal places."
   end
 
   defp package() do
