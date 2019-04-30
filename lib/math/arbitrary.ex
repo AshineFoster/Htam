@@ -41,18 +41,17 @@ defmodule Math.AP do
     raise(ArgumentError, "Unknown argument type. Enter an integer from 0 to 1000")
   end
 
-  defp calculate_inter_val(counter, max_k, {_k, _m, _l, _x, s}) when counter == max_k do
-    s
-  end
-
   defp calculate_inter_val(counter, max_k, {k, m, l, x, s}) do
-    val_cubed = &(&1 * &1 * &1)
-    m = ((val_cubed.(k) - 16 * k) * m) |> div(val_cubed.(counter))
-    l = l + 545_140_134
-    x = x * -262_537_412_640_768_000
-    s = Decimal.mult(m, l) |> Decimal.div(x) |> Decimal.add(s)
-    k = k + 12
-    calculate_inter_val(counter + 1, max_k, {k, m, l, x, s})
+    if counter == max_k do
+      s
+    else
+      m = ((Math.pow(k, 3) - 16 * k) * m) |> div(Math.pow(counter, 3))
+      l = l + 545_140_134
+      x = x * -262_537_412_640_768_000
+      s = Decimal.mult(m, l) |> Decimal.div(x) |> Decimal.add(s)
+      k = k + 12
+      calculate_inter_val(counter + 1, max_k, {k, m, l, x, s})
+    end
   end
 
   @doc """
@@ -98,9 +97,6 @@ defmodule Math.AP do
       #Decimal<2.718281828459045235360287471353>
 
   """
-  @iter 500
-  @prec 1000
-
   def e(disp \\ 10) do
     calculate_e(disp)
   end
@@ -113,10 +109,12 @@ defmodule Math.AP do
   end
 
   defp calculate_e(disp) when is_integer(disp) do
-    Decimal.set_context(%Decimal.Context{precision: @prec})
-    {pre_sum, fact} = fact_div_fact_two()
+    iter = 500
+    prec = 1000
+    Decimal.set_context(%Decimal.Context{precision: prec})
+    {pre_sum, fact} = fact_div_fact_two(iter)
 
-    (pre_sum + 2 * fact + @iter + 1)
+    (pre_sum + 2 * fact + iter + 1)
     |> Decimal.div(fact)
     |> Decimal.round(disp)
   end
@@ -125,15 +123,13 @@ defmodule Math.AP do
     raise(ArgumentError, "Unknown argument type. Enter an integer from 0 to 1000")
   end
 
-  defp fact_div_fact_two(n \\ @iter, sum \\ 0, fact_to_2 \\ 1)
-
-  defp fact_div_fact_two(n, sum, fact_to_2) when n == 2 do
-    {sum, fact_to_2 * 2}
-  end
-
-  defp fact_div_fact_two(n, sum, fact_to_2) do
-    fact_to_2 = fact_to_2 * n
-    sum = sum + fact_to_2
-    fact_div_fact_two(n - 1, sum, fact_to_2)
+  defp fact_div_fact_two(n, sum \\ 0, fact_to_2 \\ 1) do
+    if n == 2 do
+      {sum, fact_to_2 * 2}
+    else
+      fact_to_2 = fact_to_2 * n
+      sum = sum + fact_to_2
+      fact_div_fact_two(n - 1, sum, fact_to_2)
+    end
   end
 end
